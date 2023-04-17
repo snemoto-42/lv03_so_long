@@ -1,0 +1,58 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/28 15:41:54 by snemoto           #+#    #+#              #
+#    Updated: 2023/04/16 15:01:09 by snemoto          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SOLONG_SRCS	= \
+			sl_init.c \
+			sl_map.c \
+			sl_img.c \
+			sl_hook.c \
+			main.c
+
+CC		= cc
+RM		= rm -f
+NAME	= so_long
+
+SRCS	= ${SOLONG_SRCS}
+OBJS	= ${SOLONG_SRCS:.c=.o}
+
+LIBFT_PATH = libft
+LIBFT_INCLUDE = libft.a
+LIBFTPRINTF_PATH = libftprintf
+LIBFTPRINTF_INCLUDE = libftprintf.a
+
+CFLAGS	= -Wall -Wextra -Werror
+
+$(NAME): $(OBJS)
+		cd "$(PWD)/${LIBFT_PATH}" && make bonus
+		cd "$(PWD)/${LIBFTPRINTF_PATH}" && make bonus
+		$(CC) ${CFLAGS} \
+		-I include \
+			$(PWD)/${LIBFT_PATH}/${LIBFT_INCLUDE} \
+			$(PWD)/${LIBFTPRINTF_PATH}/${LIBFTPRINTF_INCLUDE} \
+		-L/usr/X11R6/lib -lmlx -lX11 -lXext -framework OpenGL -framework AppKit \
+		$(OBJS) -o $(NAME)
+
+all:	${NAME}
+
+clean:
+		${RM} ${OBJS}
+		cd "$(PWD)/${LIBFT_PATH}" && make fclean
+		cd "$(PWD)/${LIBFTPRINTF_PATH}" && make fclean
+
+fclean:	clean
+		${RM} ${NAME}
+
+re:		fclean all
+
+bonus:	all
+
+.PHONY: all clean fclean re bonus

@@ -1,0 +1,8 @@
+.gitignore
+*.o
+*.a
+*.out
+so_long
+test*
+leaksout
+minilibx-linux

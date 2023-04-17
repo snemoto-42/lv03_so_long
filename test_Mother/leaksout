@@ -1,0 +1,20 @@
+Process:         so_long [2468]
+Path:            /Volumes/VOLUME/*/so_long
+Load Address:    0x108172000
+Identifier:      so_long
+Version:         ???
+Code Type:       X86-64
+Parent Process:  bash [56171]
+
+Date/Time:       2023-04-16 22:31:34.408 +0900
+Launch Time:     2023-04-16 22:31:34.179 +0900
+OS Version:      Mac OS X 10.14.6 (18G9216)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 2468: 163 nodes malloced for 14 KB
+Process 2468: 0 leaks for 0 total leaked bytes.
+
